@@ -1883,3 +1883,38 @@ body {
     }
 
 }
+
+/* AVATARES NO MENU MOBILE */
+
+@media (max-width: 700px) {
+
+    .channels-sidebar .user-panel {
+        display: flex;
+        justify-content: flex-start;
+        padding: 0 12px;
+    }
+
+    .channels-sidebar .user-avatar {
+        display: block;
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .channels-sidebar .user-avatar img {
+        display: block;
+        width: 36px;
+        height: 36px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .channels-sidebar .user-information {
+        display: flex;
+    }
+
+    .channels-sidebar .user-settings {
+        display: block;
+    }
+
+}
