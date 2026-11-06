@@ -461,7 +461,7 @@ function createMessage(text) {
         <div class="message-avatar">
 
             <img
-                src="assets/avatars/julia.png"
+                src="assets/avatars/julia.jpg"
                 alt="Julia"
             >
 
