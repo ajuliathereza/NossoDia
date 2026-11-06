@@ -1,0 +1,1885 @@
+
+/* =========================================
+   SERVER 001 — NOSSO CANTINHO
+   Discord inspired interface
+========================================= */
+
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --background-primary: #313338;
+    --background-secondary: #2b2d31;
+    --background-tertiary: #1e1f22;
+
+    --background-hover: #35373c;
+    --background-active: #404249;
+
+    --text-primary: #f2f3f5;
+    --text-secondary: #b5bac1;
+    --text-muted: #949ba4;
+
+    --accent: #9b8bea;
+    --accent-hover: #b0a2f5;
+    --accent-soft: rgba(155, 139, 234, 0.15);
+
+    --green: #23a55a;
+
+    --border: rgba(255,255,255,0.05);
+
+    --font: "gg sans", "Segoe UI", Arial, sans-serif;
+
+}
+
+body {
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: var(--background-primary);
+
+    color: var(--text-primary);
+
+    font-family: var(--font);
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   ESTRUTURA PRINCIPAL
+========================================= */
+
+.app-container {
+
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   BARRA DE SERVIDORES
+========================================= */
+
+.servers-sidebar {
+
+    width: 72px;
+    min-width: 72px;
+
+    height: 100%;
+
+    background: var(--background-tertiary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 12px 0;
+
+    gap: 10px;
+
+    z-index: 10;
+
+}
+
+.server-icon {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: var(--background-primary);
+
+    color: var(--text-primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition: all 0.2s ease;
+
+}
+
+.server-icon:hover {
+
+    border-radius: 16px;
+
+    background: var(--accent);
+
+    color: white;
+
+}
+
+.home-icon {
+
+    background: #35363c;
+
+    font-size: 26px;
+
+}
+
+.sidebar-divider {
+
+    width: 32px;
+
+    height: 2px;
+
+    background: #393b41;
+
+    border-radius: 5px;
+
+    margin: 2px 0;
+
+}
+
+.active-server {
+
+    background: var(--accent);
+
+    border-radius: 16px;
+
+    color: white;
+
+}
+
+.active-server::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -12px;
+
+    width: 4px;
+    height: 32px;
+
+    background: white;
+
+    border-radius: 0 5px 5px 0;
+
+}
+
+.add-server {
+
+    color: var(--green);
+
+    background: #35363c;
+
+    font-size: 30px;
+
+}
+
+
+/* =========================================
+   SIDEBAR DOS CANAIS
+========================================= */
+
+.channels-sidebar {
+
+    width: 240px;
+    min-width: 240px;
+
+    height: 100%;
+
+    background: var(--background-secondary);
+
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px solid var(--border);
+
+}
+
+.server-header {
+
+    height: 48px;
+    min-height: 48px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.server-name {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+}
+
+.server-dropdown {
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+}
+
+.server-description {
+
+    padding: 18px 16px 20px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.description-label {
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+.server-description p {
+
+    margin-top: 9px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+/* CANAIS */
+
+.channels-container {
+
+    padding: 16px 8px;
+
+    flex: 1;
+
+    overflow-y: auto;
+
+}
+
+.channel-category {
+
+    padding: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+}
+
+.channel {
+
+    width: 100%;
+
+    height: 34px;
+
+    padding: 0 9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    text-align: left;
+
+    margin-bottom: 2px;
+
+    transition: all 0.15s ease;
+
+}
+
+.channel:hover {
+
+    background: var(--background-hover);
+
+    color: var(--text-primary);
+
+}
+
+.channel.active-channel {
+
+    background: var(--background-active);
+
+    color: white;
+
+}
+
+.channel-hash {
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    color: var(--text-muted);
+
+}
+
+.active-channel .channel-hash {
+
+    color: var(--accent);
+
+}
+
+
+/* =========================================
+   PAINEL DO USUÁRIO
+========================================= */
+
+.user-panel {
+
+    height: 54px;
+    min-height: 54px;
+
+    background: #232428;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 10px;
+
+    gap: 10px;
+
+}
+
+.user-avatar {
+
+    width: 34px;
+    height: 34px;
+
+    position: relative;
+
+    flex-shrink: 0;
+
+}
+
+.user-avatar img {
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+}
+
+.user-information {
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+.user-information strong {
+
+    font-size: 12px;
+
+}
+
+.user-information small {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+}
+
+.user-settings {
+
+    color: var(--text-muted);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+}
+
+.user-settings:hover {
+
+    color: white;
+
+}
+
+
+/* =========================================
+   STATUS ONLINE
+========================================= */
+
+.status-indicator {
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    border: 2px solid var(--background-secondary);
+
+}
+
+.status-indicator.online {
+
+    background: var(--green);
+
+}
+
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.main-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--background-primary);
+
+}
+
+
+/* CABEÇALHO */
+
+.channel-header {
+
+    height: 48px;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+
+}
+
+.channel-header-title {
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.header-hash {
+
+    color: var(--text-muted);
+
+    font-size: 23px;
+
+}
+
+.channel-header h1 {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+.header-actions {
+
+    display: flex;
+
+    gap: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 20px;
+
+}
+
+.header-actions span {
+
+    cursor: pointer;
+
+    transition: color 0.2s;
+
+}
+
+.header-actions span:hover {
+
+    color: var(--accent);
+
+}
+
+
+/* =========================================
+   ÁREA DE MENSAGENS
+========================================= */
+
+.messages-area {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 0 25px;
+
+    scroll-behavior: smooth;
+
+}
+
+
+/* SCROLLBAR */
+
+.messages-area::-webkit-scrollbar,
+.channels-container::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+.messages-area::-webkit-scrollbar-track,
+.channels-container::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+.messages-area::-webkit-scrollbar-thumb,
+.channels-container::-webkit-scrollbar-thumb {
+
+    background: #1a1b1e;
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================================
+   BOAS-VINDAS
+========================================= */
+
+.welcome-section {
+
+    margin: auto 24px 30px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.welcome-icon {
+
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 35px;
+
+    border-radius: 50%;
+
+    margin-bottom: 20px;
+
+}
+
+.welcome-section h2 {
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+
+    margin-bottom: 10px;
+
+}
+
+.welcome-section p {
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    max-width: 440px;
+
+}
+
+.welcome-date {
+
+    display: block;
+
+    margin-top: 17px;
+
+    font-size: 10px;
+
+    color: var(--accent);
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================
+   APRESENTAÇÃO DOS CANAIS
+========================================= */
+
+.message-list {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.channel-welcome {
+
+    margin: 0 24px 24px;
+
+    padding: 20px;
+
+    background: rgba(155,139,234,0.06);
+
+    border-left: 3px solid var(--accent);
+
+    border-radius: 0 8px 8px 0;
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+.channel-welcome-icon {
+
+    font-size: 24px;
+
+    color: var(--accent);
+
+    margin-bottom: 10px;
+
+}
+
+.channel-welcome h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 7px;
+
+}
+
+.channel-welcome p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.5;
+
+}
+
+.channel-welcome span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    color: var(--text-muted);
+
+}
+
+
+/* =========================================
+   MENSAGENS
+========================================= */
+
+.message {
+
+    display: flex;
+
+    gap: 16px;
+
+    padding: 10px 24px;
+
+    animation: messageAppear 0.35s ease;
+
+    transition: background 0.2s;
+
+}
+
+.message:hover {
+
+    background: rgba(0,0,0,0.06);
+
+}
+
+.message-avatar {
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+}
+
+.message-avatar img {
+
+    width: 40px;
+    height: 40px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: var(--background-active);
+
+}
+
+.message-body {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.message-header {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 5px;
+
+}
+
+.message-header strong {
+
+    font-size: 14px;
+
+    color: white;
+
+    font-weight: 600;
+
+}
+
+.message-tag {
+
+    color: var(--accent);
+
+    font-size: 13px;
+
+}
+
+.message-header time {
+
+    font-size: 11px;
+
+    color: var(--text-muted);
+
+}
+
+.message-text {
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #dbdee1;
+
+    overflow-wrap: anywhere;
+
+}
+
+
+/* =========================================
+   REAÇÕES
+========================================= */
+
+.message-reactions {
+
+    margin-top: 9px;
+
+    display: flex;
+
+}
+
+.reaction-button {
+
+    background: #2b2d31;
+
+    border: 1px solid #41434a;
+
+    color: var(--text-secondary);
+
+    border-radius: 12px;
+
+    padding: 4px 9px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+}
+
+.reaction-button:hover {
+
+    background: var(--accent-soft);
+
+    border-color: var(--accent);
+
+}
+
+.reaction-button.reacted {
+
+    background: rgba(155,139,234,0.2);
+
+    border-color: var(--accent);
+
+    color: white;
+
+}
+
+
+/* =========================================
+   DIGITANDO
+========================================= */
+
+.typing-indicator {
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 15px 26px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    animation: fadeIn 0.3s ease;
+
+}
+
+.typing-dots {
+
+    display: flex;
+
+    gap: 3px;
+
+}
+
+.typing-dots i {
+
+    width: 5px;
+    height: 5px;
+
+    background: var(--accent);
+
+    border-radius: 50%;
+
+    animation: typing 1s infinite ease-in-out;
+
+}
+
+.typing-dots i:nth-child(2) {
+
+    animation-delay: 0.15s;
+
+}
+
+.typing-dots i:nth-child(3) {
+
+    animation-delay: 0.3s;
+
+}
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.message-footer {
+
+    padding: 0 20px 12px;
+
+}
+
+.message-input-placeholder {
+
+    min-height: 48px;
+
+    background: #383a40;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    gap: 12px;
+
+    color: var(--text-muted);
+
+}
+
+.message-input-placeholder span {
+
+    color: var(--accent);
+
+    font-size: 20px;
+
+}
+
+.message-input-placeholder p {
+
+    font-size: 13px;
+
+}
+
+.footer-disclaimer {
+
+    text-align: center;
+
+    padding-top: 10px;
+
+    font-size: 10px;
+
+    color: var(--text-muted);
+
+    letter-spacing: 0.2px;
+
+}
+
+
+/* =========================================
+   SIDEBAR DE MEMBROS
+========================================= */
+
+.members-sidebar {
+
+    width: 240px;
+    min-width: 240px;
+
+    height: 100%;
+
+    background: var(--background-primary);
+
+    border-left: 1px solid var(--border);
+
+    padding: 20px 10px;
+
+}
+
+.members-header {
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    padding: 5px 10px 20px;
+
+}
+
+.members-category {
+
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    padding: 5px 10px 10px;
+
+}
+
+.member-card {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px 10px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+}
+
+.member-card:hover {
+
+    background: var(--background-hover);
+
+}
+
+.member-avatar {
+
+    width: 34px;
+    height: 34px;
+
+    position: relative;
+
+    flex-shrink: 0;
+
+}
+
+.member-avatar img {
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    background: var(--background-active);
+
+}
+
+.member-details {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+.member-details strong {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+.member-details small {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   MENSAGEM ESPECIAL
+========================================= */
+
+.server-note {
+
+    margin: 35px 5px 0;
+
+    padding: 18px 12px;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(155,139,234,0.12),
+        rgba(155,139,234,0.03)
+    );
+
+    border: 1px solid rgba(155,139,234,0.12);
+
+    text-align: center;
+
+}
+
+.server-note span {
+
+    font-size: 24px;
+
+    color: var(--accent);
+
+}
+
+.server-note p {
+
+    margin-top: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================
+   NOTIFICAÇÃO
+========================================= */
+
+.notification {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 320px;
+
+    background: #232428;
+
+    border: 1px solid rgba(155,139,234,0.35);
+
+    border-radius: 10px;
+
+    padding: 16px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    box-shadow: 0 8px 35px rgba(0,0,0,0.4);
+
+    z-index: 100;
+
+    animation: notificationAppear 0.35s ease;
+
+}
+
+.notification-icon {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    flex-shrink: 0;
+
+}
+
+.notification-content strong {
+
+    font-size: 12px;
+
+}
+
+.notification-content p {
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   CLASSES UTILITÁRIAS
+========================================= */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes notificationAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes typing {
+
+    0%, 60%, 100% {
+
+        transform: translateY(0);
+
+        opacity: 0.5;
+
+    }
+
+    30% {
+
+        transform: translateY(-4px);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .members-sidebar {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+
+        overflow: hidden;
+
+    }
+
+    .servers-sidebar {
+
+        display: none;
+
+    }
+
+    .channels-sidebar {
+
+        width: 190px;
+        min-width: 190px;
+
+    }
+
+    .channel {
+
+        font-size: 11px;
+
+    }
+
+    .welcome-section {
+
+        margin: auto 15px 20px;
+
+    }
+
+    .welcome-section h2 {
+
+        font-size: 21px;
+
+    }
+
+    .message {
+
+        padding: 10px 15px;
+
+        gap: 10px;
+
+    }
+
+    .message-avatar,
+    .message-avatar img {
+
+        width: 34px;
+        height: 34px;
+
+    }
+
+    .channel-welcome {
+
+        margin: 0 15px 20px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .channels-sidebar {
+
+        width: 65px;
+        min-width: 65px;
+
+    }
+
+    .server-header {
+
+        padding: 0 8px;
+
+        justify-content: center;
+
+    }
+
+    .server-name {
+
+        justify-content: center;
+
+        font-size: 0;
+
+    }
+
+    .server-name::before {
+
+        content: "♡";
+
+        font-size: 23px;
+
+        color: var(--accent);
+
+    }
+
+    .server-dropdown,
+    .server-description,
+    .channel-category,
+    .user-information,
+    .user-settings {
+
+        display: none;
+
+    }
+
+    .channels-container {
+
+        padding: 12px 8px;
+
+    }
+
+    .channel {
+
+        justify-content: center;
+
+        padding: 0;
+
+        font-size: 0;
+
+    }
+
+    .channel-hash {
+
+        font-size: 23px;
+
+    }
+
+    .user-panel {
+
+        justify-content: center;
+
+        padding: 0;
+
+    }
+
+    .main-content {
+
+        min-width: 0;
+
+    }
+
+    .channel-header {
+
+        padding: 0 12px;
+
+    }
+
+    .channel-header h1 {
+
+        font-size: 12px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+
+    }
+
+    .header-actions {
+
+        gap: 10px;
+
+    }
+
+    .welcome-section {
+
+        margin: auto 12px 20px;
+
+    }
+
+    .welcome-section h2 {
+
+        font-size: 19px;
+
+    }
+
+    .message-footer {
+
+        padding: 0 10px 10px;
+
+    }
+
+    .message-input-placeholder p {
+
+        font-size: 11px;
+
+    }
+
+    .notification {
+
+        width: calc(100% - 30px);
+
+        right: 15px;
+
+        bottom: 15px;
+
+    }
+
+}
+
+/* =========================================
+   SERVER 001 — RESPONSIVIDADE MOBILE
+========================================= */
+
+.mobile-menu-button {
+    display: none;
+}
+
+/* Tablets e celulares */
+
+@media (max-width: 700px) {
+
+    body {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .app-container {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    /* Esconder barra de servidores */
+
+    .servers-sidebar {
+        display: none;
+    }
+
+    /* Menu lateral */
+
+    .channels-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        width: min(290px, 82vw);
+        min-width: 0;
+        height: 100%;
+
+        z-index: 30;
+
+        transform: translateX(-105%);
+        transition: transform 0.3s ease;
+
+        box-shadow: 10px 0 35px rgba(0,0,0,0.35);
+    }
+
+    body.mobile-menu-open .channels-sidebar {
+        transform: translateX(0);
+    }
+
+    /* Fundo escurecido */
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0,0,0,0.55);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity 0.3s ease;
+
+        z-index: 20;
+    }
+
+    body.mobile-menu-open::before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Conteúdo principal */
+
+    .main-content {
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+    }
+
+    /* Botão de menu */
+
+    .mobile-menu-button {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 38px;
+        height: 38px;
+
+        flex-shrink: 0;
+
+        border: none;
+        border-radius: 8px;
+
+        background: var(--background-secondary);
+        color: var(--accent);
+
+        font-size: 21px;
+
+        cursor: pointer;
+    }
+
+    .mobile-menu-button:active {
+        background: var(--background-active);
+    }
+
+    /* Cabeçalho */
+
+    .channel-header {
+        padding: 0 12px;
+        gap: 10px;
+    }
+
+    .channel-header-title {
+        flex: 1;
+        min-width: 0;
+        gap: 7px;
+    }
+
+    .channel-header h1 {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .header-actions {
+        gap: 12px;
+        font-size: 18px;
+    }
+
+    /* Boas-vindas */
+
+    .welcome-section {
+        margin: auto 15px 25px;
+        padding: 20px 0;
+    }
+
+    .welcome-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 29px;
+    }
+
+    .welcome-section h2 {
+        font-size: 21px;
+        line-height: 1.3;
+    }
+
+    .welcome-section p {
+        font-size: 13px;
+    }
+
+    /* Apresentação dos canais */
+
+    .channel-welcome {
+        margin: 0 15px 20px;
+        padding: 16px;
+    }
+
+    .channel-welcome h2 {
+        font-size: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Mensagens */
+
+    .message {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    .message-avatar,
+    .message-avatar img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .message-body {
+        min-width: 0;
+    }
+
+    .message-text {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .message-header {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Área de mensagens */
+
+    .messages-area {
+        padding-top: 15px;
+        padding-bottom: 20px;
+        overscroll-behavior: contain;
+    }
+
+    /* Rodapé */
+
+    .message-footer {
+        padding: 0 10px 12px;
+    }
+
+    .message-input-placeholder {
+        min-height: 46px;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .message-input-placeholder p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .footer-disclaimer {
+        font-size: 9px;
+    }
+
+    /* Notificações */
+
+    .notification {
+        width: calc(100% - 24px);
+
+        right: 12px;
+        bottom: 12px;
+
+        padding: 13px;
+
+        z-index: 50;
+    }
+
+    /* Indicador de digitação */
+
+    .typing-indicator {
+        padding: 12px 17px;
+    }
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 380px) {
+
+    .channel-header h1 {
+        font-size: 12px;
+    }
+
+    .header-actions {
+        gap: 8px;
+    }
+
+    .welcome-section h2 {
+        font-size: 19px;
+    }
+
+    .message {
+        padding: 10px 12px;
+    }
+
+    .message-text {
+        font-size: 13px;
+    }
+
+}
+
+/* Respeitar preferência por menos animações */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}

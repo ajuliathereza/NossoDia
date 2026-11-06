@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#1e1f22">
+
+    <title>Server 001 — Nosso Cantinho</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- BARRA DE SERVIDORES -->
+        <aside class="servers-sidebar">
+
+            <div class="server-icon home-icon" title="Mensagens">
+                ♡
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <button class="server-icon active-server" title="Nosso Cantinho">
+                <span>♡</span>
+            </button>
+
+            <button class="server-icon add-server" title="Mais um motivo para sorrir">
+                +
+            </button>
+
+        </aside>
+
+
+        <!-- SIDEBAR DE CANAIS -->
+        <aside class="channels-sidebar">
+
+            <header class="server-header">
+
+                <div class="server-name">
+                    <span>nosso cantinho</span>
+                    <span class="server-dropdown">⌄</span>
+                </div>
+
+            </header>
+
+
+            <div class="server-description">
+
+                <span class="description-label">UM SERVIDOR PARTICULAR</span>
+
+                <p>
+                    um lugarzinho que existe porque nossos caminhos se cruzaram.
+                </p>
+
+            </div>
+
+
+            <!-- CANAIS DE TEXTO -->
+            <div class="channels-container">
+
+                <div class="channel-category">
+                    <span>⌄ TEXTOS</span>
+                </div>
+
+
+                <button class="channel active-channel" data-channel="primeiro-contato">
+
+                    <span class="channel-hash">#</span>
+                    <span>primeiro-contato</span>
+
+                </button>
+
+
+                <button class="channel" data-channel="como-isso-aconteceu">
+
+                    <span class="channel-hash">#</span>
+                    <span>como-isso-aconteceu</span>
+
+                </button>
+
+
+                <button class="channel" data-channel="momentos-memoraveis">
+
+                    <span class="channel-hash">#</span>
+                    <span>momentos-memoraveis</span>
+
+                </button>
+
+
+                <button class="channel" data-channel="nossas-conversas">
+
+                    <span class="channel-hash">#</span>
+                    <span>nossas-conversas</span>
+
+                </button>
+
+
+                <button class="channel" data-channel="coisas-que-eu-gosto">
+
+                    <span class="channel-hash">#</span>
+                    <span>coisas-que-eu-gosto-em-voce</span>
+
+                </button>
+
+
+                <button class="channel" data-channel="mensagem-final">
+
+                    <span class="channel-hash">#</span>
+                    <span>mensagem-final</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- USUÁRIO LOGADO -->
+            <footer class="user-panel">
+
+                <div class="user-avatar">
+
+                    <img src="assets/avatars/julia.png" alt="Julia">
+
+                    <span class="status-indicator online"></span>
+
+                </div>
+
+                <div class="user-information">
+
+                    <strong>Julia</strong>
+                    <small>criadora deste cantinho</small>
+
+                </div>
+
+                <div class="user-settings">
+                    ⚙
+                </div>
+
+            </footer>
+
+        </aside>
+
+
+        <!-- ÁREA PRINCIPAL -->
+        <main class="main-content">
+
+
+            <!-- CABEÇALHO DO CANAL -->
+            <header class="channel-header">
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Abrir canais" aria-expanded="false">
+    ☰
+</button>
+                <div class="channel-header-title">
+
+                    <span class="header-hash">#</span>
+
+                    <h1 id="channelTitle">primeiro-contato</h1>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <span title="Um cantinho só nosso">♡</span>
+                    <span title="Notificações">♧</span>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTEÚDO DAS MENSAGENS -->
+            <section class="messages-area" id="messagesArea">
+
+                <!-- BOAS-VINDAS -->
+                <div class="welcome-section">
+
+                    <div class="welcome-icon">
+                        ♡
+                    </div>
+
+                    <h2>Bem-vinda ao nosso cantinho.</h2>
+
+                    <p>
+                        Este servidor é um pouquinho diferente dos outros.
+                        Ele existe por um motivo muito especial.
+                    </p>
+
+                    <span class="welcome-date">
+                        SERVER 001 · CRIADO COM CARINHO
+                    </span>
+
+                </div>
+
+
+                <!-- MENSAGENS SERÃO INSERIDAS PELO JAVASCRIPT -->
+
+                <div id="messageList" class="message-list"></div>
+
+
+                <!-- INDICADOR DE DIGITAÇÃO -->
+                <div id="typingIndicator" class="typing-indicator hidden">
+
+                    <span class="typing-dots">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </span>
+
+                    <span>Julia está digitando...</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- RODAPÉ -->
+            <footer class="message-footer">
+
+                <div class="message-input-placeholder">
+
+                    <span>♡</span>
+
+                    <p>
+                        Este cantinho é só para você explorar...
+                    </p>
+
+                </div>
+
+                <div class="footer-disclaimer">
+
+                    feito com carinho, para uma pessoa muito especial.
+
+                </div>
+
+            </footer>
+
+
+        </main>
+
+
+        <!-- SIDEBAR DE MEMBROS -->
+        <aside class="members-sidebar">
+
+            <div class="members-header">
+
+                <span>MEMBROS — 2</span>
+
+            </div>
+
+
+            <div class="members-group">
+
+                <span class="members-category">
+                    ONLINE — 2
+                </span>
+
+
+                <div class="member-card">
+
+                    <div class="member-avatar">
+
+                        <img src="assets/avatars/julia.jpg" alt="Julia">
+
+                        <span class="status-indicator online"></span>
+
+                    </div>
+
+                    <div class="member-details">
+
+                        <strong>Julia</strong>
+                        <small>criadora</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="member-card">
+
+                    <div class="member-avatar">
+
+                        <img src="assets/avatars/priscila.jpeg" alt="Priscila">
+
+                        <span class="status-indicator online"></span>
+
+                    </div>
+
+                    <div class="member-details">
+
+                        <strong>Priscila</strong>
+                        <small>membro especial ♡</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="server-note">
+
+                <span>♡</span>
+
+                <p>
+                    Duas pessoas.
+                    Um servidor.
+                    Muitas histórias.
+                </p>
+
+            </div>
+
+        </aside>
+
+
+    </div>
+
+
+    <!-- NOTIFICAÇÃO -->
+    <div id="notification" class="notification hidden">
+
+        <div class="notification-icon">
+            ♡
+        </div>
+
+        <div class="notification-content">
+
+            <strong>Uma mensagem para você!</strong>
+
+            <p id="notificationText">
+                Priscila, você recebeu uma nova mensagem.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
