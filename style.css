@@ -1918,3 +1918,90 @@ body {
     }
 
 }
+
+/* =========================================
+   CORREÇÃO DOS NOMES DOS CANAIS NO MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .channels-sidebar {
+        width: min(290px, 82vw);
+    }
+
+    .channels-sidebar .channel-name {
+        display: inline !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .channels-sidebar .channel-item {
+        justify-content: flex-start;
+        gap: 8px;
+    }
+}
+
+/* CORREÇÃO DOS CANAIS NO MENU MOBILE */
+
+@media (max-width: 700px) {
+
+    .channels-sidebar {
+        width: min(290px, 82vw) !important;
+        min-width: 250px;
+    }
+
+    .channels-sidebar .channels-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .channels-sidebar .channel {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 100%;
+        padding: 10px 12px;
+        white-space: nowrap;
+    }
+
+    .channels-sidebar .channel span:not(.channel-hash) {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .channels-sidebar .channel-hash {
+        display: inline-block !important;
+        flex-shrink: 0;
+    }
+}
+
+/* CORREÇÃO DEFINITIVA DOS NOMES DOS CANAIS */
+
+@media (max-width: 480px) {
+
+    .channels-sidebar {
+        width: min(290px, 82vw) !important;
+        min-width: 250px !important;
+    }
+
+    .channels-sidebar .channel {
+        justify-content: flex-start !important;
+        padding: 0 12px !important;
+        font-size: 13px !important;
+        white-space: nowrap;
+    }
+
+    .channels-sidebar .channel span:not(.channel-hash) {
+        font-size: 13px !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .channels-sidebar .channel-hash {
+        font-size: 20px !important;
+    }
+
+}

@@ -25,12 +25,27 @@ const channels = {
             },
 
 {
-                text: "Todos queriam chamar a tua atenção, mas eu queria chamar a sua. E eu consegui, mor.",
+                text: "Todos queriam falar com vc mas eu queria mais. E eu consegui, mor.",
                 delay: 1800
             },
 
             {
                 text: "E quando começamos a conversar, eu já sabia que você era especial.",
+                delay: 1800
+            },
+
+            {
+                text: "Eu fui notando essa ansiedade, esse calor no meu peito, essa vontade de estar com vc.",
+                delay: 1800
+            },
+
+            {
+                text: "A gente se apegou rápido, mor e eu não me arrependo de nada. Eu só quero que a gente continue assim, sempre.",
+                delay: 1800
+            },
+
+            {
+                text: "Quero a gente cuidando de nós mesmas, nos amando, nos respeitando e nos fazendo felizes.",
                 delay: 1800
             },
 
@@ -163,8 +178,28 @@ const channels = {
                 delay: 1800
             },
 
+               {
+                text: "Você é importante demais para mim e eu quero saber de tudo que você quiser me contar sempre <3",
+                delay: 1800
+            },
+
+   {
+                text: "Seja o que for, mesmo que vc ache que não vou entender eu sempre vou.",
+                delay: 1800
+            },
+
+   {
+                text: "Nos momentos ruins eu estarei aqui chorando com vc. E nos bons...",
+                delay: 1800
+            },
+
             {
                 text: "Eu vou amar saber tudo e vou estar aqui sorrindo com cada palavra. ❤️",
+                delay: 2200
+            },
+
+            {
+                text: "Cade alegria e vitória sua vai ser alegria e vitória minha também. Eu te amo, mor.",
                 delay: 2200
             }
 
@@ -177,32 +212,37 @@ const channels = {
 
         title: "coisas-que-eu-gosto-em-voce",
 
-        welcome: "Cinco coisas que eu amo em você. E ainda faltam tantas...",
+        welcome: "Coisas que eu amo em você. E ainda faltam tantas...",
 
         messages: [
 
             {
-                text: "01 — Tua voz. Amo teu jeito de falar, tuas maneiras de dizer as palavras. Me encanta.",
+                text: "Tua voz. Amo teu jeito de falar, tuas maneiras de dizer as palavras. Me encanta.",
                 delay: 1500
             },
 
             {
-                text: "02 — Teus olhos. Amo como tu olha e como eu sinto meu coração quando tu me olha com carinho.",
+                text: "Teus olhos. Amo como tu olha e como eu sinto meu coração quando tu me olha com carinho.",
                 delay: 1800
             },
 
             {
-                text: "03 — O jeito que tua voz fica gostosa quando a gente faz amor. Eu conheço mais esse teu lado e quero saber mais e mais e ter só pra mim.",
+                text: "O jeito que tua voz fica gostosa quando a gente faz amor. Eu conheço mais esse teu lado e quero saber mais e mais e ter só pra mim.",
                 delay: 2000
             },
 
             {
-                text: "04 — Teu corpo me deixa louca. Fico com vontade, te querendo sempre, e você não sai da minha mente por nada.",
+                text: "Sempre que vc conversa comigo a gente fala sobre tudo e eu vejo o quanto sua mente e seu coração são lindos. Eu amo isso em você.",
                 delay: 2000
             },
 
             {
-                text: "05 — Eu te admiro e respeito tanto. Você é esforçada, amorosa e incrível com as pessoas que ama e com quem está ao seu redor.",
+                text: "Teu corpo me deixa louca. Fico com vontade, te querendo sempre, e você não sai da minha mente por nada.",
+                delay: 2000
+            },
+
+            {
+                text: "Eu te admiro e respeito tanto. Você é esforçada, amorosa e incrível com as pessoas que ama e com quem está ao seu redor.",
                 delay: 2200
             },
 
